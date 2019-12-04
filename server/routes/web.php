@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\LoginController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -34,8 +36,7 @@ Route::get('/logout', function () {
 # # # # #
 # OAuth
 # # # # #
-Route::post('/callback', function () {
-});
+Route::get('/callback', 'LoginController@getLineUserProfile');
 
 # # # # #
 # マイページ
