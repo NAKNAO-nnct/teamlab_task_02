@@ -11,37 +11,11 @@
 |
 */
 
-use App\Http\Controllers\LoginController;
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
 
-# # # # #
-#  ログイン系
-# # # # #
-// ログインページ
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 
-// ログイン処理
-Route::post('/login', function () {
-});
-
-// ログアウト処理
-Route::get('/logout', function () {
-});
-
-# # # # #
-# OAuth
-# # # # #
-Route::get('/callback', 'LoginController@getLineUserProfile');
-
-# # # # #
-# マイページ
-# # # # #
-// マイページ
-Route::get('/myPage', function () {
-});
-
+Route::get('/home', 'HomeController@index')->name('home');
