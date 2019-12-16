@@ -48,6 +48,6 @@ class LoginController extends Controller {
         $json = json_decode(json_encode($json), true);
         print_r($json);
 
-        echo $json['userId'];
+//        echo $json['userId'];
     }
 }
