@@ -12,14 +12,18 @@ class SocialAccountsService
             ->where('provider_id', $providerUser->getId())
             ->first();
 
+        // print_r($account->user);
+
         if ($account) {
+            // print_r($account->user);
             return $account->user;
         } else {
 
-            $user = User::where('email', $providerUser->getEmail())->first();
+            $user = User::where('id', $providerUser->getId())->first();
 
             if (!$user) {
                 $user = User::create([
+                    'id' => $providerUser->getId(),
                     'email' => $providerUser->getEmail(),
                     'name'  => $providerUser->getName(),
                     'avatar' => $providerUser->getAvatar(),

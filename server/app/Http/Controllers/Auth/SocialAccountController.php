@@ -31,8 +31,6 @@ class SocialAccountController extends Controller
         try {
             $user = \Socialite::with($provider)->user();
             $token = $user->token;
-            $refreshToken = $user->refreshToken;
-            $expiresIn = $user->expiresIn;
         } catch (\Exception $e) {
             //	echo $e;
             //	return ;
