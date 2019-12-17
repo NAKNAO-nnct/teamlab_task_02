@@ -68,7 +68,7 @@
 
 
                     <script>
-                        getFollowers("{{ Auth::user()->nickname }}")
+                        getFollowers("{{ Auth::user()->name }}")
                     </script>
                 </div>
             </div>
