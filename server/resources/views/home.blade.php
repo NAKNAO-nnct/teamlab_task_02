@@ -49,7 +49,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{ Auth::user()->name }}</h5>
-                            <p class="card-text">ID: {{ Auth::user()->nickname }}</p>
+                            <p class="card-text">Name: {{ Auth::user()->nickname }}</p>
                             <p class="card-text">Mail: {{ Auth::user()->mail }}</p>
                             <p class="card-text"><small class="text-muted">Last updated {{ Auth::user()->updated_at }}</small></p>
                         </div>
