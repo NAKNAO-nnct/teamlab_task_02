@@ -30,6 +30,23 @@
         console.log(render_html);
         return render_html;
     }
+
+    function getJwtKey(){
+        fetch('https://task03.misosiru.ml/api/login', {
+            mode: 'cors',
+            body: JSON.stringify({
+                'email': 'trompot@misosiru.ml',
+                'password': 'qU4LcvMF7JG7m7J'
+            })
+        }).then(function(response) {
+            return response.json();
+        }).then(function(myJson) {
+            document.getElementById('jwtkey') = myJson['access_token'];
+
+        }).catch(function(error) {
+            console.warn(error);
+        });
+    }
 </script>
 
 <div class="container">
@@ -54,6 +71,22 @@
                             <p class="card-text"><small class="text-muted">Last updated {{ Auth::user()->updated_at }}</small></p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">JWT Key</div>
+
+                <div class="card-body">
+                    <div id="jwtkey">
+                    </div>
+
+
+
+                    <script>
+                        getJwtKey();
+                    </script>
                 </div>
             </div>
         </div>
