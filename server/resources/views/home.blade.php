@@ -32,20 +32,22 @@
     }
 
     function getJwtKey(){
-        fetch('https://task03.misosiru.ml/api/login', {
-            mode: 'cors',
-            body: JSON.stringify({
-                'email': 'trompot@misosiru.ml',
-                'password': 'qU4LcvMF7JG7m7J'
-            })
-        }).then(function(response) {
-            return response.json();
-        }).then(function(myJson) {
-            document.getElementById('jwtkey') = myJson['access_token'];
+      fetch('https://task03.misosiru.ml/api/login', {
+        mode: 'cors',
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        method: 'POST',
+        body: "email=trompot%40misosiru.ml&password=qU4LcvMF7JG7m7J"
+      }).then(function(response){
+        return response.json();
+      }).then(function(myJson) {
+        console.log(myJson);
+        document.getElementById('jwtkey').innerHTML = myJson['access_token'];
 
-        }).catch(function(error) {
-            console.warn(error);
-        });
+      }).catch(function(error) {
+        console.warn(error);
+      }
     }
 </script>
 
